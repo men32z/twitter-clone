@@ -1,9 +1,6 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe 'User Auth', type: :feature do
-
   let(:user) { create(:user) }
 
   describe 'User sign up' do
