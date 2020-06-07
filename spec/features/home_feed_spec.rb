@@ -66,5 +66,22 @@ RSpec.describe 'Home and Feed', type: :feature do
       visit root_path
       expect(page.text.tr("\n", '')).to match(/#{user.name}.*@#{user.username}.*#{post.created_at}.*#{message}/)
     end
+
+    scenario "should see my posts and post from peple who I follow" do
+      Follow.create(user_id: user.id, follow_id: user2.id)
+      message = 'this is a message'
+      user2.posts.create(message: "#{message} #{user2.id}")
+      user.posts.create(message: "#{message} #{user.id}")
+      visit root_path
+      expect(page).to have_content("#{message} #{user2.id}")
+      expect(page).to have_content("#{message} #{user.id}")
+    end
+
+    scenario "shouldn't see post of people who i'm not following" do
+      message = 'this is a message'
+      user3.posts.create(message: "#{message} #{user3.id}")
+      visit root_path
+      expect(page).to_not have_content("#{message} #{user3.id}")
+    end
   end
 end

@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6 offset-md-3">
+      <%= render "layouts/messages" %>
       <h1>Recent Tweets</h1>
+      <%= link_to "Tweet", new_posts_path, class: "btn btn-info" %>
       <hr>
       <br>
       <%= render @posts %>
