@@ -1,24 +1,70 @@
-# README
+# Twitter Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> A social media app designed to mimic some of Twiter's key features, such as the ability to create tweets and follow users. Built using Ruby and Rails. 
 
-Things you may want to cover:
 
-* Ruby version
+## Built With
 
-* System dependencies
+- Ruby 
+- Ruby on rails 
+- Postgresql 
+- Deployed in [Heroku](https://men32z-twitter-clone.herokuapp.com) 
 
-* Configuration
+## Live Demo
 
-* Database creation
+[Live Demo Link](https://men32z-twitter-clone.herokuapp.com)
 
-* Database initialization
+you can create an account or you can use these credentials.
+```
+username: 'usernametest1'
+password: '123123123'
+```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Getting started
 
-* Deployment instructions
+To get started with the app, clone the repo and then install the needed gems:
 
-* ...
+```
+$ bundle install
+$ yarn install
+```
+
+Next, migrate the database:
+
+```
+$ rails db:create
+$ rails db:migrate
+```
+
+To be able to see what has been done, run the rails server
+```
+$ rails server
+```
+
+Or Visit
+
+[Live version](https://men32z-twitter-clone.herokuapp.com/)
+
+
+### Run tests
+
+```
+bundle exec rspec
+```
+
+## Upcoming Features?
+
+- Pagination can be potentially improved.
+- General UI improvements.
+
+## Authors
+
+👤 **Luis Preza**
+
+- Github: [@men32z](https://github.com/men32z)
+- Linkedin: [men32z](https://www.linkedin.com/in/men32z/)
+
+## 📝 License
+
+This project is MIT licensed.
