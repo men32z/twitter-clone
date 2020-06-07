@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mt-3">
+      <%= render "layouts/messages" %>
+      <h1><%= @user.name %>, @<%= @user.username %> Profile</h1>
+      <hr>
+      <%= "Following #{@user.following_counter}" %>
+      <%= "Followers #{@user.followers_counter}" %>
+      <% if !current_user.following?(@user.id) && @user.id != current_user.id %>
+          <%= link_to "Follow user", follow_path(username: current_user.username, user_id: @user.id), method: :post, class:"btn btn-info" %>
+      <% end %>
+      <hr>
+    </div>
+    <div class="col-12 col-md-6 offset-md-3">
+      <h2>Recent Tweets</h2>
+      <br>
+      <%= render @posts %>
+      <br>
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>

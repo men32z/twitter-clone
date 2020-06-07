@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 mt-3">
+      <%= render "layouts/messages" %>
+      <h1><%= @follow_back ? 'Followers' : 'Following' %></h1>
+      <hr>
+      <br>
+        <table class="table table-striped">
+          <tbody>
+            <%= render partial: "user", collection: @users, locals: {follow_back: @follow_back}  %>
+          </tbody>
+        </table>
+      <br>
+    </div>
+  </div>
+</div>

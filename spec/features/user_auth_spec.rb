@@ -55,5 +55,15 @@ RSpec.describe 'User Auth', type: :feature do
       end
       expect(page).to have_content('Invalid Username or password')
     end
+
+    scenario 'I must be able to log out' do
+      within 'form' do
+        fill_in 'Username', with: user.username
+        fill_in 'Password', with: user.password
+      end
+      click_button 'Log in'
+      find(:xpath, "//a[@href='#{destroy_user_session_path}']").click
+      expect(page.current_path).to eq(new_user_session_path)
+    end
   end
 end

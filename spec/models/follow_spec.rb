@@ -37,15 +37,14 @@ RSpec.describe Follow, type: :model do
       end.to change(Follow, :count).by(2)
     end
 
-    it "user.following should show people who i Follow" do
+    it 'user.following should show people who i Follow' do
       Follow.create(user_id: user1.id, follow_id: user2.id)
       expect(user1.following.last.follow_id).to eq(user2.id)
     end
 
-    it "user.followers should show people who are following me" do
+    it 'user.followers should show people who are following me' do
       Follow.create(user_id: user2.id, follow_id: user1.id)
       expect(user1.followers.last.user_id).to eq(user2.id)
     end
-
   end
 end

@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <b><%= user.name %></b>
+    <%= link_to "(@#{user.username})", user_profile_path(user.username) %>
+  </td>
+  <% if @follow_back && !current_user.following?(user.id) && current_user.id != user.id %>
+    <td>
+      <%= link_to "Follow user", follow_path(username: current_user.username, user_id: user.id), method: :post, class:"btn btn-info" %>
+    </td>
+  <% end %>
+</tr>

@@ -67,7 +67,7 @@ RSpec.describe 'Home and Feed', type: :feature do
       expect(page.text.tr("\n", '')).to match(/#{user.name}.*@#{user.username}.*#{post.created_at}.*#{message}/)
     end
 
-    scenario "should see my posts and post from peple who I follow" do
+    scenario 'should see my posts and post from peple who I follow' do
       Follow.create(user_id: user.id, follow_id: user2.id)
       message = 'this is a message'
       user2.posts.create(message: "#{message} #{user2.id}")
@@ -82,6 +82,31 @@ RSpec.describe 'Home and Feed', type: :feature do
       user3.posts.create(message: "#{message} #{user3.id}")
       visit root_path
       expect(page).to_not have_content("#{message} #{user3.id}")
+    end
+
+    scenario 'should see counter of people who is following me' do
+      visit root_path
+      expect(page).to have_content("Followers #{user.followers_counter}")
+    end
+
+    scenario "should see counter of people who i'm following" do
+      visit root_path
+      expect(page).to have_content("Following #{user.following_counter}")
+    end
+
+    scenario "i must be able to return to home page while I'm anywhere in the app." do
+      visit root_path
+      expect(page).to have_content('Home')
+      expect(page).to_not have_selector("a[href='#{root_path}']")
+      visit followers_path(username: user.username)
+      expect(page).to have_content('Home')
+      expect(page).to_not have_selector("a[href='#{root_path}']")
+      visit following_path(username: user.username)
+      expect(page).to have_content('Home')
+      expect(page).to_not have_selector("a[href='#{root_path}']")
+      find(:xpath, "//a[@href='#{destroy_user_session_path}']").click
+      expect(page).to have_content('Home')
+      expect(page).to_not have_selector("a[href='#{root_path}']")
     end
   end
 end
