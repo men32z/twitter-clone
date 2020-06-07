@@ -1,0 +1,12 @@
+<div>
+  <div>
+    <b><%= post.user.name %></b>,
+    <%= link_to "@#{post.user.username}", user_profile_path(post.user.username) %>
+    <br>
+    <small><%= post.created_at %></small>
+  </div>
+  <div>
+    <%= post.message %>
+  </div>
+  <hr>
+</div>

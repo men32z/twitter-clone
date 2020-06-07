@@ -10,6 +10,7 @@ gem 'pg'
 
 gem 'devise'
 
+gem 'kaminari'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
